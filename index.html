@@ -1,47 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="dodingApp">
+
 <head>
     <meta charset="UTF-8">
     <title>DODING APP</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript">
-        var app = angular.module('dodingApp',[]);
-            
-        app.filter('html',['$sce',function($sce){
-            return function(text){
-                return $sce.trustAsHtml(text);
-            };
-        }]);
-
-        app.controller('dodingCtrl',function($scope,$http){
-            $http.get('doding.json').success(function(data){
-                $scope.doding = data;
-            });
-            $scope.saya = "dsdsd";
-            
-        });
+<!--    <link rel="stylesheet" href="skins/eden.css">-->
+    <style>
+        .bigPad {
+            padding: 15px 0;
+        }
+        body{
+            margin-top: 40px;
+/*            background-color: #333333;*/
+        }
+    </style>
+    <script type="text/javascript" src="js/angular.min.js">
     </script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/dodingCtrl.js"></script>
+    <script src="js/dodingFactory.js"></script>
+    <script src="js/dodingDirective.js"></script>
+    <script src="js/app.js"></script>
 </head>
-
-<body ng-controller="dodingCtrl">
-	bs3-ta
-    <div class="container" >
-        <table class="table table-striped">
-            <tr>
-                <th>NO</th>
-                <th>Kategori</th>
-                <th>Judul</th>
-                <th>Lirik</th>
-            </tr>
-            <tr ng-repeat="lagu in doding">
-                <td>{{lagu.no}}</td>
-                <td>{{lagu.kategori}}</td>
-                <td>{{lagu.judul}}</td>
-                <td ng-bind-html="lagu.lirik | html"></td>
-            </tr>
-        </table>
-    </div>
-
+<body>
+    <div ng-view></div>
 </body>
 </html>

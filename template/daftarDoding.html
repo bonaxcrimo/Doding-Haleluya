@@ -1,0 +1,37 @@
+<div class="container">
+
+
+        <div class="row bigPad">
+            <div class="col-md-12">
+                <input type="text" class="form-control" ng-model="query" placeholder="Masukkan judul atau nomor atau kategori lagu">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered table-responsive">
+                    <tr>
+                        <th><a href="" ng-click="caraSort='no'; reverse=!reverse ">NO</a></th>
+                        <th><a href="" ng-click="caraSort='kategori'; reverse=!reverse ">Kategori</a></th>
+                        <th><a href="" ng-click="caraSort='judul'; reverse=!reverse ">Judul</a></th>
+                        <th>Action</th>
+                    </tr>
+                    <tr ng-repeat="lagu in hasil = (doding | filter:query | orderBy:caraSort:reverse)">
+                        <td>{{lagu.no}}</td>
+                        <td>{{lagu.kategori}}</td>
+                        <td>
+                            {{lagu.judul}}
+                        </td>
+                        <td><a href="#/{{lagu.no}}">Lihat Lirik</a></td>
+                    </tr>
+                    <tr ng-if="hasil.length == 0">
+                        <td colspan="4">Hasil tidak ditemukan</td>
+                    </tr>
+                    <tr ng-if="hasil.length > 0">
+                        <td colspan="4">Banyak Data : <b>{{hasil.length}}</b></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
